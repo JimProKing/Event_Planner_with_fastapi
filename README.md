@@ -14,8 +14,7 @@ class Event(SQLModel, table=True):
 ```py
 new_event = Event(title="Book Launch",
     image="src/fastapi.png",
-    description="The book launch event will
- be held at Packt HQ, Packt city",
+    description="The book launch event will be held at Packt HQ, Packt city",
     location="Google Meet",
     tags=["packt", "book"])"
 ```
