@@ -26,7 +26,7 @@ with Session(engine) as session:
     session.commit( )
  ```
 > [!TIP]
-> session 클래스의 메서드
+> **```session``` 클래스의 메서드**
 > 
 > 1. ```add()``` : 메모리에 추가
 > 2. ```commit()``` : 트랜잭션 정리
