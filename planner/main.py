@@ -5,7 +5,7 @@ from routes.events import event_router
 from database.connection import conn
 import uvicorn
 from contextlib import asynccontextmanager
-from database.connection import conn
+from database.connection import Settings
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -15,11 +15,17 @@ async def lifespan(app: FastAPI):
     # shutdown (필요하면 여기에 정리 코드 작성)
 
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI()
+settings = Settings()
 
 # 라우트 등록
 app.include_router(user_router, prefix="/user")
 app.include_router(event_router, prefix="/event")
+
+@app.on_event("startup")
+async def init_db():
+    await settings.initialize_database()
+
 
 @app.get("/")
 async def home():
