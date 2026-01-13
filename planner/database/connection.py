@@ -8,6 +8,7 @@ from pydantic import BaseSettings, BaseModel
 
 
 class Settings(BaseSettings):
+    SECRET_KEY: Optional[str] = None
     DATABASE_URL: Optional[str] = None
 
     async def initialize_database(self):
@@ -27,11 +28,9 @@ class Database:
         await document.create()
         return
 
-    async def get(self, id: PydanticObjectId) -> Any:
+    async def get(self, id: PydanticObjectId) -> Optional[Any]:
         doc = await self.model.get(id)
-        if doc:
-            return doc
-        return False
+        return doc  # 없으면 None 반환
 
     async def get_all(self) -> List[Any]:
         docs = await self.model.find_all().to_list()

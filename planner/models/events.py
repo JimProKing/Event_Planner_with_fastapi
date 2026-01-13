@@ -10,6 +10,7 @@ class Event(Document):
     description: str
     tags: List[str]
     location: str
+    creator: Optional[str]
 
     class Config:
         schema_extra = {
