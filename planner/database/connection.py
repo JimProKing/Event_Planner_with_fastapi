@@ -39,6 +39,7 @@ class Database:
     async def update(self, id: PydanticObjectId, body: BaseModel) -> Any:
         doc_id = id
         des_body = body.dict()
+        #
 
         des_body = {k: v for k, v in des_body.items() if v is not None}
         update_query = {"$set": {
