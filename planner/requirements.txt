@@ -1,19 +1,22 @@
-# 핵심 패키지 최신화 (yarl 빌드 에러 해결 + 보안/성능 개선)
-fastapi>=0.115.0          # 0.74.1 → 최신으로
-uvicorn>=0.30.0           # 0.17.5 → 최신으로
-yarl>=1.18.0              # 1.7.2 → 1.18 이상으로 (Python 3.13 지원 강화)
-multidict>=6.0.5          # 같이 업데이트 추천
-pydantic>=2.0.0           # 1.9.0 → 2.x로 (FastAPI 최신과 호환)
+# 핵심: FastAPI, Uvicorn, Pydantic v2 + settings 분리 패키지 (에러 해결 핵심)
+fastapi>=0.115.0
+uvicorn>=0.30.0
+pydantic>=2.8.0                # 3.13 호환 위해 2.8+ 추천 (pydantic-core 빌드 안정)
+pydantic-settings>=2.5.0       # BaseSettings 여기서! (대시 - 필수, 이전 에러 해결)
 
-# 나머지는 필요에 따라 업그레이드 (호환 깨질 수 있으니 천천히)
-beanie>=1.25.0            # MongoDB ODM, 최신 추천
-motor>=3.3.0              # 2.5.1 → 최신
-pymongo>=4.6.0            # 3.12.3 → 최신 (보안 이슈 많음)
-sqlmodel>=0.0.22          # 0.0.6 → 최신
-SQLAlchemy>=2.0.0         # 1.4.32 → 2.x로 (sqlmodel과 호환)
-starlette>=0.40.0         # 0.17.1 → 최신
+# Beanie & MongoDB 관련 (pydantic v2 완벽 호환 버전)
+beanie>=1.25.0                 # 최신으로, pydantic v2 지원 강화
+motor>=3.3.0
+pymongo>=4.6.0
 
-# 나머지 패키지는 그대로 두거나 최신으로
+# yarl/multidict 업그레이드 (초기 빌드 에러 방지)
+yarl>=1.18.0
+multidict>=6.0.5
+
+# 기존 프로젝트에 있던 패키지들 (최신화 추천, 호환 깨지지 않게 최소 업그레이드)
+sqlmodel>=0.0.22
+SQLAlchemy>=2.0.0
+starlette>=0.40.0
 anyio>=4.0.0
 asgiref>=3.8.0
 bcrypt>=4.0.0
