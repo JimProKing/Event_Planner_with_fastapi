@@ -1,32 +1,36 @@
-anyio==3.5.0
-asgiref==3.5.0
-bcrypt==3.2.0
-beanie==1.10.4
-cffi==1.15.0
-click==8.0.4
-dnspython==2.2.0
-email-validator==1.1.3
-fastapi==0.74.1
-h11==0.13.0
-idna==3.3
-Jinja2==3.0.3
-MarkupSafe==2.1.0
-motor==2.5.1
-multidict==6.0.2
-passlib==1.7.4
-pycparser==2.21
-pydantic==1.9.0
-PyJWT==2.3.0
-pymongo==3.12.3
-python-dotenv==0.20.0
-python-multipart==0.0.5
-six==1.16.0
-sniffio==1.2.0
-SQLAlchemy==1.4.32
-sqlalchemy2-stubs==0.0.2a20
-sqlmodel==0.0.6
-starlette==0.17.1
-toml==0.10.2
-typing_extensions==4.1.1
-uvicorn==0.17.5
-yarl==1.7.2
+# 핵심 패키지 최신화 (yarl 빌드 에러 해결 + 보안/성능 개선)
+fastapi>=0.115.0          # 0.74.1 → 최신으로
+uvicorn>=0.30.0           # 0.17.5 → 최신으로
+yarl>=1.18.0              # 1.7.2 → 1.18 이상으로 (Python 3.13 지원 강화)
+multidict>=6.0.5          # 같이 업데이트 추천
+pydantic>=2.0.0           # 1.9.0 → 2.x로 (FastAPI 최신과 호환)
+
+# 나머지는 필요에 따라 업그레이드 (호환 깨질 수 있으니 천천히)
+beanie>=1.25.0            # MongoDB ODM, 최신 추천
+motor>=3.3.0              # 2.5.1 → 최신
+pymongo>=4.6.0            # 3.12.3 → 최신 (보안 이슈 많음)
+sqlmodel>=0.0.22          # 0.0.6 → 최신
+SQLAlchemy>=2.0.0         # 1.4.32 → 2.x로 (sqlmodel과 호환)
+starlette>=0.40.0         # 0.17.1 → 최신
+
+# 나머지 패키지는 그대로 두거나 최신으로
+anyio>=4.0.0
+asgiref>=3.8.0
+bcrypt>=4.0.0
+cffi>=1.16.0
+click>=8.1.0
+dnspython>=2.6.0
+email-validator>=2.0.0
+h11>=0.14.0
+idna>=3.7
+Jinja2>=3.1.0
+MarkupSafe>=2.1.0
+passlib>=1.7.4
+pycparser>=2.21
+PyJWT>=2.8.0
+python-dotenv>=1.0.0
+python-multipart>=0.0.9
+six>=1.16.0
+sniffio>=1.3.0
+toml>=0.10.2
+typing_extensions>=4.9.0

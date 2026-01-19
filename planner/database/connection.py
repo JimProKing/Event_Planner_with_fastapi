@@ -19,6 +19,12 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
 
+    async def init_db():
+        test_settings = Settings()
+        test_settings.DATABASE_URL = "mongodb://localhost:27017/testdb"
+
+        await test_settings.initialize_database()
+
 
 class Database:
     def __init__(self, model):

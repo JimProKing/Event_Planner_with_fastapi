@@ -6,7 +6,18 @@ from database.connection import Settings
 from routes.events import event_router
 from routes.users import user_router
 
+from fastapi.middleware.cors import CORSMiddleware # 교차 출처 리소스 검증 하기위한..(특정 도메인에서만 API 호출 가능하도록)
+
+origins = ["*"]
+
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 
 settings = Settings()
 
